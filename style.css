@@ -7,3 +7,7 @@
 body {
   padding: 200px;
 }
+
+.selected {
+  background-color: gray;
+}
