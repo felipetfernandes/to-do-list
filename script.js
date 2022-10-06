@@ -1,7 +1,8 @@
 const input = document.getElementById('texto-tarefa');
 const todoList = document.getElementById('lista-tarefas');
-const buttonNew = document.getElementById('criar-tarefa');
-const buttonClear = document.getElementById('apaga-tudo');
+const buttonNewTask = document.getElementById('criar-tarefa');
+const buttonClearList = document.getElementById('apaga-tudo');
+const buttonClearDones = document.getElementById('remover-finalizados');
 
 function newTask() {
   if (input.value !== '') {
@@ -39,7 +40,15 @@ function clearList() {
   }
 }
 
-buttonNew.addEventListener('click', newTask);
-buttonClear.addEventListener('click', clearList);
+function clearDones() {
+  const completed = document.getElementsByClassName('completed');
+  for (let index = completed.length - 1; index >= 0; index -= 1) {
+    todoList.removeChild(completed[index]);
+  }
+}
+
+buttonNewTask.addEventListener('click', newTask);
+buttonClearList.addEventListener('click', clearList);
+buttonClearDones.addEventListener('click', clearDones);
 todoList.addEventListener('click', selectTask);
 todoList.addEventListener('dblclick', completedTask);
