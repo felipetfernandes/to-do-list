@@ -17,8 +17,21 @@ function selectTask() {
   if (selected != null) {
     selected.removeAttribute('class');
   }
-  task.className = 'selected';
+  if (task.className !== 'completed') {
+    task.className = 'selected';
+  }
+}
+
+function completedTask() {
+  const task = window.event.target;
+  console.log(task);
+  if (task.className === 'completed') {
+    task.removeAttribute('class');
+  } else {
+    task.className = 'completed';
+  }
 }
 
 button.addEventListener('click', newTask);
 todoList.addEventListener('click', selectTask);
+todoList.addEventListener('dblclick', completedTask);
