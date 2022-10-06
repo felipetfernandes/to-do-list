@@ -1,6 +1,7 @@
 const input = document.getElementById('texto-tarefa');
 const todoList = document.getElementById('lista-tarefas');
-const button = document.getElementById('criar-tarefa');
+const buttonNew = document.getElementById('criar-tarefa');
+const buttonClear = document.getElementById('apaga-tudo');
 
 function newTask() {
   if (input.value !== '') {
@@ -32,6 +33,13 @@ function completedTask() {
   }
 }
 
-button.addEventListener('click', newTask);
+function clearList() {
+  while (todoList.firstChild) {
+    todoList.removeChild(todoList.firstChild);
+  }
+}
+
+buttonNew.addEventListener('click', newTask);
+buttonClear.addEventListener('click', clearList);
 todoList.addEventListener('click', selectTask);
 todoList.addEventListener('dblclick', completedTask);
