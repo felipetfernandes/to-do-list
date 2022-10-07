@@ -31,16 +31,16 @@ function newTask() {
 function selectTask() {
   const task = window.event.target;
   const selected = document.getElementsByClassName('selected')[0];
-  if (task.className.includes('selected')) {
+  /*  if (task.className.includes('selected')) {
     task.classList.remove('selected');
-  } else {
-    if (selected != null) {
-      selected.classList.remove('selected');
-    }
-    task.classList.add('selected');
+  } else { */
+  if (selected != null) {
+    selected.classList.remove('selected');
   }
+  task.classList.add('selected');
   saveList();
 }
+/* } */
 
 function completedTask() {
   const task = window.event.target;
@@ -93,6 +93,7 @@ function removeSelected() {
   const selected = document.getElementsByClassName('selected')[0];
   if (selected) {
     selected.outerHTML = '';
+    saveList();
   }
 }
 
