@@ -4,26 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Todo List</title>
   </head>
   <body>
     <header>
-      <h1>Minha Lista de Tarefas</h1>
+      <h1>My To-Do List</h1>
       <p id="funcionamento">
-        Clique duas vezes em um item para marcá-lo como completo
+        Double-click an item to mark it as complete
       </p>
     </header>
     <main>
-      <input id="texto-tarefa" type="text" />
-      <ol id="lista-tarefas"></ol>
-      <button id="criar-tarefa">Nova Tarefa</button>
-      <button id="apaga-tudo">Limpar Lista</button>
-      <button id="remover-finalizados">Limpar concluidos</button>
-      <button id="salvar-tarefas">Salvar Tarefas</button>
-      <button id="mover-cima">mover para cima</button>
-      <button id="mover-baixo">mover para baixo</button>
-      <button id="remover-selecionado">Remover selecionado</button>
+      <div class="input-group mb-3">
+        <input id="texto-tarefa" class="form-control" type="text" placeholder="New Task" />
+        <button id="criar-tarefa" class="btn btn-outline-secondary">New Task</button>
+        <button id="salvar-tarefas" class="btn btn-outline-secondary">Save Tasks</button>
+      </div>
+      <div class="btn-group move">
+        <button id="mover-cima" class="btn btn-secondary">Move Selected Up</button>
+        <button id="mover-baixo" class="btn btn-secondary">Move Selected Down</button>
+      </div>
+      <ol id="lista-tarefas" class="list-group list-group-flush">
+        
+      </ol>
+      <div class="btn-group cleaning" role="group">
+        <button id="remover-selecionado" class="btn btn-warning">Remove Selected</button>
+        <button id="remover-finalizados" class="btn btn-warning">Remove Done</button>
+        <button id="apaga-tudo" class="btn btn-danger">Clear List</button>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

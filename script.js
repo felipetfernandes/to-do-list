@@ -7,6 +7,7 @@ const buttonSaveList = document.getElementById('salvar-tarefas');
 const buttonUp = document.getElementById('mover-cima');
 const buttonLow = document.getElementById('mover-baixo');
 const buttonRemove = document.getElementById('remover-selecionado');
+const listItem = 'list-group-item';
 
 function saveList() {
   localStorage.setItem('savedList', todoList.innerHTML);
@@ -22,6 +23,7 @@ function newTask() {
   if (input.value !== '') {
     const task = document.createElement('li');
     task.innerText = input.value;
+    task.classList.add(listItem);
     todoList.appendChild(task);
     input.value = '';
   }
@@ -30,26 +32,30 @@ function newTask() {
 
 function selectTask() {
   const task = window.event.target;
-  const selected = document.getElementsByClassName('selected')[0];
-  /*  if (task.className.includes('selected')) {
+  if (task.className.includes(listItem)) {
+    const selected = document.getElementsByClassName('selected')[0];
+    /*  if (task.className.includes('selected')) {
     task.classList.remove('selected');
   } else { */
-  if (selected != null) {
-    selected.classList.remove('selected');
+    if (selected != null) {
+      selected.classList.remove('selected');
+    }
+    task.classList.add('selected');
+    saveList();
   }
-  task.classList.add('selected');
-  saveList();
 }
 /* } */
 
 function completedTask() {
   const task = window.event.target;
-  if (task.className.includes('completed')) {
-    task.classList.remove('completed');
-  } else {
-    task.classList.add('completed');
+  if (task.className.includes(listItem)) {
+    if (task.className.includes('completed')) {
+      task.classList.remove('completed');
+    } else {
+      task.classList.add('completed');
+    }
+    saveList();
   }
-  saveList();
 }
 
 function clearList() {
